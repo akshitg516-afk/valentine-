@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our 6 Year Journey</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #fff0f3; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2); text-align: center; max-width: 400px; width: 85%; transition: 0.5s; }
+        .journey-text { color: #ff4d6d; font-weight: bold; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: #333; margin-top: 10px; }
+        .btn { background: #ff4d6d; color: white; border: none; padding: 15px 25px; border-radius: 30px; cursor: pointer; font-size: 16px; margin: 10px; width: 100%; transition: transform 0.2s ease; }
+        .btn:hover { background: #ff758f; }
+        
+        /* The Rotating No Button Style */
+        #noBtn { 
+            background: #adb5bd; 
+            width: auto; 
+            position: absolute; 
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .spin {
+            animation: spinMe 0.5s linear infinite;
+        }
+
+        @keyframes spinMe {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        img { border-radius: 15px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <div id="proposal-box" class="card">
+        <span class="journey-text">Since 2020 • 6 Beautiful Years</span>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNwSULPk77/giphy.gif" width="200">
+        <h2>6 years and counting...</h2>
+        <h3>Will you be my Valentine? ❤️</h3>
+        <button class="btn" style="width: 150px;" onclick="success()">YES!</button>
+        <button class="btn" id="noBtn" onmouseover="dodgeAndSpin()">No</button>
+    </div>
+
+    <script>
+        function dodgeAndSpin() {
+            const btn = document.getElementById('noBtn');
+            
+            // Generate random positions
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 150);
+            
+            // Move and Add Spin Class
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+            btn.classList.add('spin');
+            
+            // Change text randomly for extra fun
+            const texts = ["No", "Are you sure?", "Wait!", "Try again", "Nope!", "Click Yes!"];
+            btn.innerText = texts[Math.floor(Math.random() * texts.length)];
+        }
+
+        function success() {
+            document.body.innerHTML = `
+                <div class="card" style="background: #ff4d6d; color: white;">
+                    <h1>YAY! 🥰❤️</h1>
+                    <p>6 years down, a lifetime to go.</p>
+                    <p>I love you!</p>
+                </div>
+            `;
+            document.body.style.background = "#ff4d6d";
+        }
+    </script>
+</body>
+</html>
